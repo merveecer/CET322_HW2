@@ -1,0 +1,41 @@
+﻿@model DepartmentModel
+@{
+    ViewData["Title"] = "Department Create";
+}
+
+<h2>Add new department</h2>
+<div class="row">
+    <div class="container">
+        <form asp-controller="Departments" asp-action="Create" method="post">
+            <div class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class=" input-group mb-2">
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(x => x.Name)
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(x => x.Name, null, new { @class = "form-control" })
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+            </div>
+            <button type="submit" class=" btn btn-success"> <i class="fa fa-save"></i>  Save</button>
+            <button type="button" id="cancelbtn" class=" btn btn-danger"> <i class="fa fa-cancel"></i>  Cancel</button>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+     $(document).ready(function () {
+            $("#cancelbtn").click(function () {
+                window.location = "@Url.Action("DepartmentList", "Departments")";
+            });
+        });
+
+</script>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
