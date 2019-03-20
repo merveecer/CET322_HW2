@@ -72,6 +72,7 @@ namespace CET322_HW2.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(DepartmentModel model)
         {
             if (ModelState.IsValid)
@@ -114,6 +115,7 @@ namespace CET322_HW2.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(int? id, DepartmentModel model)
         {
             var department = _context.Departments.Where(x => x.Id == model.Id).FirstOrDefault();

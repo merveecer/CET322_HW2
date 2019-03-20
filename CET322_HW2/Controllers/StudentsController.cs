@@ -99,6 +99,7 @@ namespace CET322_HW2.Controllers
             return View(studentModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(StudentModel model)
         {
             var existingStudent = _context.Students.Where(x => x.SchoolNumber == model.SchoolNumber).FirstOrDefault();
@@ -158,6 +159,7 @@ namespace CET322_HW2.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(int? id, StudentModel model)
         {
             if (!id.HasValue)
